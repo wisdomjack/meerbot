@@ -20,19 +20,25 @@ ui <- fluidPage(
       
       actionButton("forward", "Forward"),
       br(),
+      br(),
       actionButton("left", "Left"),
       actionButton("right", "Right"),
       br(),
+      br(),
       actionButton("backward", "Backward"),
-
       br(),
-	
+      br(),
       actionButton("stop_motors", "Stop Motors"),
-
       br(),
-
+      br(),
       actionButton("blue_led", "Blue"),
-      actionButton("blue_led_off", "Blue Off")
+      actionButton("blue_led_off", "Blue Off"),
+      br(),
+      br(),
+      actionButton("right_circle", "Right circle"),
+      br(),
+      actionButton("lights", "Lights"),
+      actionButton("trick", "Trick")
       
       ),
     
@@ -97,8 +103,20 @@ server <- function(input, output){
 	blue_led_off()
   })
 
- 
+ observeEvent(input$right_circle, {
+	#from python
+	right_circle()
+})
 
+ observeEvent(input$lights, {
+	#from python
+	lights()
+})
+
+ observeEvent(input$trick, {
+	#from python
+	trick()
+})
     
   
   output$log <- renderText({
